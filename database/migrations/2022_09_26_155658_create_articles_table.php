@@ -20,6 +20,8 @@ return new class extends Migration
             $table->boolean('published');
 
             $table->timestamps();
+
+            $table->foreignId('user_id');
         });
     }
 

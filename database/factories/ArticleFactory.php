@@ -30,4 +30,13 @@ class ArticleFactory extends Factory
             ];
         });
     }
+
+    public function randomPublished()
+    {
+        return $this->state(function () {
+            return [
+                'published' => (bool)random_int(0, 1),
+            ];
+        });
+    }
 }

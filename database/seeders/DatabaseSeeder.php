@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Article;
 use Illuminate\Database\Seeder;
+use \App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,15 +17,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
-        \App\Models\User::factory(5)->editor()->create();
-        \App\Models\User::factory()->admin()->create([
+        User::factory(10)->create();
+        $editors = User::factory(5)->editor()->create();
+        User::factory()->admin()->create([
             'name' => 'Admin',
             'email' => 'admin@email.com',
         ]);
 
-        $this->call([
-            ArticleSeeder::class,
-        ]);
+        foreach ( $editors as $editor) {
+            Article::factory()->count(5)->randomPublished()->for($editor)->create();
+        }
     }
 }
