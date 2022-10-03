@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enum\UserRole;
 use App\Filament\Resources\ArticleResource\Pages;
 use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Models\Article;
@@ -18,6 +19,8 @@ use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Grid;
+use Filament\Tables\Columns\BooleanColumn;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleResource extends Resource
 {
@@ -45,7 +48,8 @@ class ArticleResource extends Resource
       ->columns([
         TextColumn::make('title')->limit(25),
         TextColumn::make('created_at'),
-        ToggleColumn::make('published')
+        TextColumn::make('user.name')->label('Author'),
+        Auth::user()->role === UserRole::ADMIN ? ToggleColumn::make('published') : BooleanColumn::make('published'),
       ])
       ->filters([
         //
