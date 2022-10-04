@@ -11,7 +11,7 @@ class ArticleController extends Controller
     {
         $articles = Article::query()->where('published', true)->get();
 
-        return view('dashboard', [
+        return view('home', [
             'articles' => $articles,
         ]);
     }
