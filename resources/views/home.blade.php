@@ -13,7 +13,7 @@
           <a href='{{route('article.show', ['article' => $article])}}' class="card-body">
             <p class="text-sm">{{ $article->created_at->format('d M Y') }}</p>
             <h2 class="card-title">{{ $article->title }}</h2>
-            <p>Author {{ $article->user->name }}</p>
+            <p>Author {{ $article->author->name }}</p>
           </a>
         </div>
         @endforeach

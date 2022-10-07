@@ -9,7 +9,10 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::query()->where('published', true)->get();
+        $articles = Article::query()
+        ->where('published', true)
+        ->with('author')
+        ->get();
 
         return view('home', [
             'articles' => $articles,
@@ -20,7 +23,7 @@ class ArticleController extends Controller
         if( !$article->published ) {
             abort(403, 'Unauthorized.');
         }
-
+        
         return
         view('article.show', [
             'article' => $article,

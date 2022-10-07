@@ -10,7 +10,7 @@
       <div class="overflow-hidden shadow-sm sm:rounded-lg">
         <div class="py-1">
           <span class="font-bold text-md">
-            {{$article->created_at->format('d M Y')}}, by {{$article->user->name}}
+            {{$article->created_at->format('d M Y')}}, by {{$article->author->name}}
           </span>
         </div>
         <div class="text-xl max-w-prose text-base-content">
