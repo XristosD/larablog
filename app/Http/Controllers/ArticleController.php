@@ -15,4 +15,15 @@ class ArticleController extends Controller
             'articles' => $articles,
         ]);
     }
+
+    public function show(Article $article) {
+        if( !$article->published ) {
+            abort(403, 'Unauthorized.');
+        }
+
+        return
+        view('article.show', [
+            'article' => $article,
+        ]);
+    }
 }
