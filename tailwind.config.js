@@ -14,6 +14,12 @@ module.exports = {
                 sans: ["Nunito", ...defaultTheme.fontFamily.sans],
             },
         },
+        colors: {
+            banner: {
+                base: "#1C3256",
+                content: "#F6F9FF",
+            },
+        },
     },
 
     plugins: [require("@tailwindcss/forms"), require("daisyui")],
