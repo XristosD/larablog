@@ -23,4 +23,9 @@ class Article extends Model
     public function author() {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'img_parent');
+    }
 }

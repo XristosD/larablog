@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
+            $table->string('path');
+            
+            $table->integer('img_parent_id');
+            $table->string('img_parent_type');
+
             $table->timestamps();
         });
     }
