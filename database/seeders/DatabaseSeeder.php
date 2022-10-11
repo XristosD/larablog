@@ -18,14 +18,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)->create();
-        $editors = User::factory(5)->editor()->create();
+        User::factory(5)->editor()->has(Article::factory()->count(5)->randomPublished())->create();
         User::factory()->admin()->create([
             'name' => 'Admin',
             'email' => 'admin@email.com',
-        ]);
-
-        foreach ( $editors as $editor) {
-            Article::factory()->count(5)->randomPublished()->for($editor)->create();
-        }
+        ]);        
     }
 }
