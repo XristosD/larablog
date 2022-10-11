@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Enum\UserRole;
 use App\Filament\Resources\ArticleResource\Pages;
 use App\Filament\Resources\ArticleResource\RelationManagers;
+use App\Filament\Resources\ArticleResource\RelationManagers\ImageRelationManager;
 use App\Models\Article;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -21,6 +22,10 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Grid;
 use Filament\Tables\Columns\BooleanColumn;
 use Illuminate\Support\Facades\Auth;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Card;
 
 class ArticleResource extends Resource
 {
@@ -33,10 +38,21 @@ class ArticleResource extends Resource
     return $form
       ->schema([
       Grid::make()
-          ->schema([
+        ->schema([
           TextInput::make('title')->required(),
           Textarea::make('body'),
           Checkbox::make('published'),
+          Grid::make()
+            ->relationship('image')
+            ->schema([
+              FileUpload::make('path')
+                ->label('Image')
+                ->directory('images')
+                ->imageCropAspectRatio('16:9')
+                ->imageResizeTargetWidth('1920')
+                ->imageResizeTargetHeight('1080'),
+            ])
+            ->columns(1)
         ])
         ->columns(1)        
       ]);
@@ -65,7 +81,7 @@ class ArticleResource extends Resource
   public static function getRelations(): array
   {
     return [
-      //
+      // ImageRelationManager::class,
     ];
   }
   
