@@ -10,10 +10,13 @@
       <div class="overflow-hidden grid md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3 shadow-sm sm:rounded-lg">
         @foreach ($articles as $article)
          <div class="card bg-base-100 shadow-xl">
-          <a href='{{route('article.show', ['article' => $article])}}' class="card-body">
-            <p class="text-sm">{{ $article->created_at->format('d M Y') }}</p>
-            <h2 class="card-title">{{ $article->title }}</h2>
-            <p>Author {{ $article->author->name }}</p>
+           <a href='{{route('article.show', ['article' => $article])}}' class="block">
+            <figure><img src="{{asset($article->image->path)}}" alt="{{$article->author->name}}" /></figure>
+            <div class="card-body">
+              <p class="text-sm">{{ $article->created_at->format('d M Y') }}</p>
+              <h2 class="card-title">{{ $article->title }}</h2>
+              <p>Author {{ $article->author->name }}</p>
+            </div>
           </a>
         </div>
         @endforeach

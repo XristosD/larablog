@@ -13,12 +13,10 @@
             {{$article->created_at->format('d M Y')}}, by {{$article->author->name}}
           </span>
         </div>
-        <div class="text-xl max-w-prose text-base-content">
+        <div class="pb-10 overflow-hidden"><img class="rounded-lg" src="{{asset($article->image->path)}}" alt="{{$article->author->name}}" /></div>
+        <div class="text-xl max-w-[75ch] text-base-content">
           {{$article->body}}
         </div>
-        
-        
-
       </div>
     </div>
   </div>
