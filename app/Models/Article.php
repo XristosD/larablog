@@ -28,4 +28,8 @@ class Article extends Model
     {
         return $this->morphOne(Image::class, 'img_parent');
     }
+
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
 }
