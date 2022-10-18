@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Article;
 use App\Models\Image;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 use \App\Models\User;
 
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->admin()->create([
             'name' => 'Admin',
             'email' => 'admin@email.com',
-        ]);        
+        ]);
+        Tag::factory(25)->create();
     }
 }
