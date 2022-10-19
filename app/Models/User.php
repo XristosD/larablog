@@ -46,7 +46,7 @@ class User extends Authenticatable implements FilamentUser
     ];
 
     public function canAccessFilament(): bool {
-        return $this->role === UserRole::ADMIN || $this->role === UserRole::EDITOR;
+        return $this->isAdmin()|| $this->isAuthor();
     }
     
     public function articles() {
@@ -55,5 +55,10 @@ class User extends Authenticatable implements FilamentUser
 
     public function isAdmin() {
         return $this->role === UserRole::ADMIN;
+    }
+
+    public function isAuthor()
+    {
+        return $this->role === UserRole::AUTHOR;
     }
 }

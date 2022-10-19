@@ -42,7 +42,7 @@ class ArticlePolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->role == UserRole::EDITOR;
+        return $user->isAdmin() || $user->isAuthor();
     }
 
     /**
@@ -54,7 +54,7 @@ class ArticlePolicy
      */
     public function update(User $user, Article $article)
     {
-        return $user->isAdmin() || ( $user->role == UserRole::EDITOR && $article->user_id === $user->id );
+        return $user->isAdmin() || ( $user->isAuthor() && $article->user_id === $user->id );
     }
 
     /**

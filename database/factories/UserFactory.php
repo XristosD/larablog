@@ -46,10 +46,10 @@ class UserFactory extends Factory
         ]);
     }
 
-    public function editor()
+    public function author()
     {
         return $this->state(fn (array $attributes) => [
-            'role' => UserRole::EDITOR->value,
+            'role' => UserRole::AUTHOR->value,
         ]);
     }
 }
