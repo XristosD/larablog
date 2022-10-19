@@ -7,7 +7,7 @@
 
   <div class="py-12">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-      <div class="overflow-hidden grid md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3 shadow-sm sm:rounded-lg">
+      <div class="overflow-hidden grid md:grid-cols-2 lg:grid-cols-3 gap-y-4 md:gap-x-4 md:gap-y-6 px-1 md:px-5 md:py-10">
         @foreach ($articles as $article)
          <div class="card bg-base-100 shadow-xl">
            <a href='{{route('article.show', ['article' => $article])}}' class="block">
