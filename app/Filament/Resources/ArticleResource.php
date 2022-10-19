@@ -70,7 +70,7 @@ class ArticleResource extends Resource
       ->columns([
         TextColumn::make('title')->limit(25),
         TextColumn::make('created_at'),
-        TextColumn::make('user.name')->label('Author'),
+        TextColumn::make('author.name')->label('Author'),
         Auth::user()->role === UserRole::ADMIN ? ToggleColumn::make('published') : BooleanColumn::make('published'),
       ])
       ->filters([
