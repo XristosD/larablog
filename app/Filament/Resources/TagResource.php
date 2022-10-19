@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TagResource\Pages;
 use App\Filament\Resources\TagResource\RelationManagers;
+use App\Filament\Resources\TagResource\RelationManagers\ArticlesRelationManager;
 use App\Models\Tag;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
@@ -57,7 +58,7 @@ class TagResource extends Resource
   public static function getRelations(): array
   {
     return [
-      //
+      ArticlesRelationManager::class,
     ];
   }
   
