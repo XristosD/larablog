@@ -26,6 +26,7 @@ use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
 
 class ArticleResource extends Resource
 {
@@ -52,7 +53,12 @@ class ArticleResource extends Resource
                 ->imageResizeTargetWidth('1920')
                 ->imageResizeTargetHeight('1080'),
             ])
-            ->columns(1)
+            ->columns(1),
+            Grid::make()->schema([
+              Select::make('tags')
+              ->relationship('tags', 'title')
+              ->multiple()
+            ])->columns(1)
         ])
         ->columns(1)        
       ]);
