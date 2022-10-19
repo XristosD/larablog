@@ -13,7 +13,14 @@
             {{$article->created_at->format('d M Y')}}, by {{$article->author->name}}
           </span>
         </div>
-        <div class="pb-10 overflow-hidden"><img class="rounded-lg" src="{{asset($article->image->path)}}" alt="{{$article->author->name}}" /></div>
+        <div class="pb-3 overflow-hidden">
+          <img class="rounded-lg" src="{{asset($article->image->path)}}" alt="{{$article->author->name}}" />
+        </div>
+        <div class="flex gap-1 pb-9">
+          @foreach ($article->tags as $tag)
+            <a class="btn btn-outline btn-sm btn-ghost">#{{$tag->title}}</a>
+          @endforeach
+        </div>
         <div class="text-xl max-w-[75ch] text-base-content">
           {{$article->body}}
         </div>

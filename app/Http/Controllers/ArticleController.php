@@ -12,6 +12,7 @@ class ArticleController extends Controller
         $articles = Article::query()
         ->where('published', true)
         ->with('author')
+        ->with('tags')
         ->get();
 
         return view('home', [
@@ -23,6 +24,8 @@ class ArticleController extends Controller
         if( !$article->published ) {
             abort(403, 'Unauthorized.');
         }
+
+        $article->load('author', 'tags');
         
         return
         view('article.show', [
