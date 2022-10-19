@@ -18,7 +18,7 @@ class ArticleFactory extends Factory
     {
         return [
             'title' => fake()->sentence(),
-            'body' => fake()->paragraph(),
+            'body' => fake()->paragraphs($nb = 15, $asText = true),
             'published' => true,
         ];
     }
