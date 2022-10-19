@@ -71,7 +71,7 @@ class ArticleResource extends Resource
         TextColumn::make('title')->limit(25),
         TextColumn::make('created_at'),
         TextColumn::make('author.name')->label('Author'),
-        Auth::user()->role === UserRole::ADMIN ? ToggleColumn::make('published') : BooleanColumn::make('published'),
+        Auth::user()->isAdmin() ? ToggleColumn::make('published') : BooleanColumn::make('published'),
       ])
       ->filters([
         //
