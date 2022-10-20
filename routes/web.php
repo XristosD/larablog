@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ArticleController::class, 'index'])->name('home');
 Route::get('/article/{article}', [ArticleController::class, 'show'])->name('article.show');
+
+Route::prefix('tags')->controller(TagController::class)->name('tag.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/{tag}')->name('show');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
