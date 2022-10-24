@@ -21,14 +21,18 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         User::factory(5)->author()->has(
-            Article::factory()->count(5)->randomPublished()->has(
+            Article::factory()->count(15)->randomPublished()->has(
                 Image::factory()
             )
-            )->create();
+        )->create();
         User::factory()->admin()->create([
             'name' => 'Admin',
             'email' => 'admin@email.com',
         ]);
-        Tag::factory(25)->create();
+        Tag::factory(40)->has(
+            Article::factory()->count(15)->randomPublished()->state(['user_id' => 1])->has(
+                Image::factory()
+            )
+        )->create();
     }
 }
