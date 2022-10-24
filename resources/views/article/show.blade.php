@@ -18,7 +18,7 @@
         </div>
         <div class="flex gap-1 pb-9">
           @foreach ($article->tags as $tag)
-            <a class="btn btn-outline btn-sm btn-ghost">#{{$tag->title}}</a>
+            <a href="/tags/{{$tag->id}}" class="btn btn-outline btn-sm btn-ghost">#{{$tag->title}}</a>
           @endforeach
         </div>
         <div class="text-xl max-w-[75ch] text-base-content">

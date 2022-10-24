@@ -20,7 +20,7 @@ Route::get('/article/{article}', [ArticleController::class, 'show'])->name('arti
 
 Route::prefix('tags')->controller(TagController::class)->name('tag.')->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/{tag}')->name('show');
+    Route::get('/{tag}', 'show')->name('show');
 });
 
 Route::get('/dashboard', function () {
