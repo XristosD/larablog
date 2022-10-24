@@ -18,7 +18,7 @@
       @include('layouts.navigation')
 
       <!-- Page Heading -->
-      @if ($header->isNotEmpty())
+      @isset ($header)
         <header class="bg-banner-base shadow">
           <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-banner-content">
             {{ $header }}
@@ -31,6 +31,9 @@
       <main>
         {{ $slot }}
       </main>
-    </div>
+    </div>       
+    @isset ($footerScripts)
+      {{ $footerScripts }}
+    @endif
   </body>
 </html>
