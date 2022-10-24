@@ -10,7 +10,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::query()
-        ->where('published', true)
+        ->published()
         ->with('author')
         ->with('tags')
         ->get();
