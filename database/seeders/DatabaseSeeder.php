@@ -9,6 +9,7 @@ use App\Models\Image;
 use App\Models\Tag;
 use Illuminate\Database\Seeder;
 use \App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +21,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)->create();
-        User::factory(5)->author()->has(
+        $authors = User::factory(5)->author()->has(
             Article::factory()->count(15)->randomPublished()->has(
                 Image::factory()
             )
@@ -30,9 +31,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@email.com',
         ]);
         Tag::factory(40)->has(
-            Article::factory()->count(15)->randomPublished()->state(['user_id' => 1])->has(
-                Image::factory()
-            )
+            Article::factory()->count(5)->randomPublished()
+                ->state(new Sequence(
+                    ...$authors->map(function ($item) {
+                        return ['user_id' => $item->id];
+                    })->toArray()
+                ))->has(Image::factory())
         )->create();
     }
 }
