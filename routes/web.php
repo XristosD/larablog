@@ -28,8 +28,4 @@ Route::prefix('authors')->controller(AuthorController::class)->name('author.')->
     Route::get('/{user}', 'show')->name('show');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
