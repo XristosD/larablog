@@ -10,7 +10,7 @@
       <div class="overflow-hidden shadow-sm sm:rounded-lg">
         <div class="py-1">
           <span class="font-bold text-md">
-            {{$article->created_at->format('d M Y')}}, by {{$article->author->name}}
+            {{$article->created_at->format('d M Y')}}, by <a href="/authors/{{$article->author->id}}">{{$article->author->name}}</a>
           </span>
         </div>
         <div class="pb-3 overflow-hidden">
