@@ -16,6 +16,9 @@
             <x-article-card :article="$article"/>
           @endforeach
         </div>
+        <div class="overflow-hidden px-1 md:px-5 py-2">
+          {{$articles->onEachSide(2)->links()}}
+        </div>
       </div>
     </div>
   </div>

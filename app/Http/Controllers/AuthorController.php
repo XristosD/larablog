@@ -9,7 +9,7 @@ use View;
 class AuthorController extends Controller
 {
     public function show(Request $request, User $user) {
-        $articles = $user->articles()->published()->get();
+        $articles = $user->articles()->published()->with('tags')->paginate(12);
 
         return View('author.show', [
             'author' => $user,
