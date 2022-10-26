@@ -21,6 +21,19 @@ module.exports = {
             },
         },
     },
+    daisyui: {
+        themes: [
+            {
+                light: {
+                    ...require("daisyui/src/colors/themes")[
+                        "[data-theme=light]"
+                    ],
+                    primary: "#1C3256",
+                    "primary-focus": "mediumblue",
+                },
+            },
+        ],
+    },
 
     plugins: [require("@tailwindcss/forms"), require("daisyui")],
 };
