@@ -13,9 +13,9 @@ class ArticleController extends Controller
         ->published()
         ->with('author')
         ->with('tags')
-        ->get();
+        ->paginate(12);
 
-        return view('home', [
+        return view('article.index', [
             'articles' => $articles,
         ]);
     }

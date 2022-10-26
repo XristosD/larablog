@@ -12,6 +12,9 @@
 
         <!-- Navigation Links -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex text-banner-content">
+          <x-nav-link :href="route('article.index')" :active="request()->routeIs('article.index')">
+            {{ __('Articles') }}
+          </x-nav-link>
           <x-nav-link :href="route('tag.index')" :active="request()->routeIs('tag.index')">
             {{ __('Tags') }}
           </x-nav-link>
@@ -65,6 +68,9 @@
   <!-- Responsive Navigation Menu -->
   <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
     <div class="pt-2 pb-3 space-y-1 text-banner-content">
+      <x-responsive-nav-link :href="route('article.index')" :active="request()->routeIs('article.index')">
+        {{ __('Articles') }}
+      </x-responsive-nav-link>
       <x-responsive-nav-link :href="route('tag.index')" :active="request()->routeIs('tag.index')">
         {{ __('Tags') }}
       </x-responsive-nav-link>

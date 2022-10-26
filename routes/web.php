@@ -17,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ArticleController::class, 'index'])->name('home');
-Route::get('/article/{article}', [ArticleController::class, 'show'])->name('article.show');
+
+Route::prefix('articles')->controller(ArticleController::class)->name('article.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/{article}', 'show')->name('show');
+});
 
 Route::prefix('tags')->controller(TagController::class)->name('tag.')->group(function () {
     Route::get('/', 'index')->name('index');
