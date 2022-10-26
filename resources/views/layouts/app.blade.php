@@ -14,7 +14,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
   <body class="font-sans antialiased">
-    <div class="min-h-screen bg-base-200">
+    <div class="min-h-screen flex flex-col bg-base-200">
       @include('layouts.navigation')
 
       <!-- Page Heading -->
@@ -31,7 +31,7 @@
       <main>
         {{ $slot }}
       </main>
-      <footer class="bg-banner-base">
+      <footer class="bg-banner-base mt-auto">
         <div class="footer items-center px-4 py-8 max-w-7xl mx-auto text-banner-content">
           <div class="items-center grid-flow-col">
             <h1 CLASS="text-3xl font-extrabold">LARABLOG</h1>
